@@ -73,6 +73,9 @@ if (keyed == 49){
 if (keyed == 50){
   rain();
   }
+if (keyed == 51){
+  ShowChristmasTree();
+}
 }
 
 
@@ -131,4 +134,58 @@ void fusion() {
  delay(100);
  colorshift=  colorshift + 1;
   }
+
+  void ShowChristmasTree()
+{
+ // draw base
+ int colorChoice[4] = {0x002200,0x002200,0xFFFF00,0xFF33CC};// Hex values for green,green,yellow,red
+ int starColorChoice[3] = {0xFFFFFF,0xFFFF00,0xCCCCCC};// hex values fro the color star
+ int colorPick= random(2);
+ 
+for(x=3;x<-1;x--)
+{
+  for(y=3;y<-1;y--)
+  {
+    Rb.setPixelZXY(0,x,y,0x00FF00);
+    Rb.setPixelZXY(1,x,y,0x002000);
+  }
+}
+for(x=2;x>0;x--)
+{
+  for(y=2;y>0;y--)
+  {
+   Rb.setPixelZXY(1,x,y,0x00FF00);
+   Rb.setPixelZXY(2,x,y,0x002000);
+   Rb.setPixelZXY(3,x,y,0xFFFF00);
+  }
+}
+// Need to switch between random colors around the base.
+for (z=1;z=20000;z++)
+{
+    Rb.setPixelZXY(1,0,0,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,0,1,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,0,2,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,0,3,colorChoice[random(3)]);    
+    Rb.setPixelZXY(1,1,0,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,1,3,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,2,0,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,2,3,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,3,0,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,3,1,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,3,2,colorChoice[random(3)]);
+    Rb.setPixelZXY(1,3,3,colorChoice[random(3)]);
+
+
+ for(x=1 ;x>0;x--)
+{
+  for(y=2;y>0;y--)
+  {
+   Rb.setPixelZXY(2,x,y,colorChoice[random(3)]);
+   Rb.setPixelZXY(3,x,y,colorChoice[random(3)]);
+  }
+}
+delay(1000);
+}
+
+}
 
