@@ -1,8 +1,10 @@
 /*
- * Hello World!
+ * Communication 1
  *
- * This is the Hello World! for Arduino. 
- * It shows how to send data to the computer
+ * Will take input from the USB connection and will change the display depending on what is sent.
+ *   0  clears display
+ *   1  disply fusion
+ *   2  rain
  */
 
 
@@ -24,7 +26,12 @@ unsigned char BLUE[64] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 unsigned char plasma[4][4][4];
 
 unsigned char x,y,z,colorshift=0;
-unsigned int red,green,blue,ltblue,lterblue,oldx,oldy,olderx,oldery,oldestx,oldesty;
+int red = 0x00;
+int green =0x00;
+int blue = 0xFF;
+int ltblue = 0x68;
+int lterblue = 0x30;
+unsigned int oldx,oldy,olderx,oldery,oldestx,oldesty;
 void setup()                    // run once, when the sketch starts
 {
   Serial.begin(9600);           // set up Serial library at 9600 bps
@@ -72,11 +79,7 @@ if (keyed == 50){
 void rain() {
      x = random(4);
      y = random(4);
-     red = 0x00;
-     green =0x00;
-     blue = 0xFF;
-     ltblue = 0x68;
-     lterblue = 0x30;
+    
  
      //Paint random colors
      Rb.setPixelZXY(3,x,y,red,green,blue); //uses R, G and B color bytes
